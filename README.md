@@ -1,6 +1,8 @@
 # Codex SSH Password Shim (Windows)
 
-An **unofficial, source-only** Windows OpenSSH wrapper for using Codex Desktop Remote SSH with a password-authenticated Linux host. It is intended for situations where Codex starts SSH with `-o BatchMode=yes` and cannot prompt for a password.
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+An **unofficial** Windows OpenSSH wrapper for using Codex Desktop Remote SSH with a password-authenticated Linux host. It is intended for situations where Codex starts SSH with `-o BatchMode=yes` and cannot prompt for a password.
 
 The wrapper changes SSH arguments **only** when it sees both the SSH alias configured by `TARGET_HOST` in `.env` and the option `BatchMode=yes`. Everything else is handed to the real Windows OpenSSH client without modified arguments or additional authentication environment variables. It starts the real client with inherited stdin, stdout and stderr handles rather than copying data through managed streams.
 
@@ -20,7 +22,7 @@ The wrapper changes SSH arguments **only** when it sees both the SSH alias confi
 | `ssh-config.example` | Sample OpenSSH host-alias configuration. |
 | `.gitignore` | Excludes passwords, executables, logs and build files. |
 
-**No compiled executables or real credentials are distributed.** At runtime, the generated `ssh.exe`, `codex-askpass.exe`, and your private `.env` must be in the same folder. No separate password file is needed.
+At runtime, the generated `ssh.exe`, `codex-askpass.exe`, and your private `.env` must be in the same folder.
 
 ## Requirements
 
@@ -51,9 +53,9 @@ notepad .\.env
 Example `.env`:
 
 ```dotenv
+REAL_SSH=C:\Windows\System32\OpenSSH\ssh.exe
 TARGET_HOST=codex-remote
 PASSWORD="YOUR_SSH_PASSWORD"
-REAL_SSH=C:\Windows\System32\OpenSSH\ssh.exe
 ```
 
 `REAL_SSH` must be an absolute path to the real OpenSSH client, not this wrapper. Missing or invalid `REAL_SSH` causes the wrapper to exit with code 255. `TARGET_HOST` must equal an alias in your local OpenSSH config. `PASSWORD` is the SSH password itself. 
