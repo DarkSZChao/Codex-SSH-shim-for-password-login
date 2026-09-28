@@ -1,0 +1,28 @@
+# Local credentials. Never commit actual passwords or personal configs.
+ssh-password.txt
+*password*.txt
+*.pass
+*.secret
+.env
+.env.*
+!.env.example
+
+# Generated binaries: build locally from source.
+*.exe
+*.pdb
+bin/
+obj/
+.build/
+.vs/
+
+# Temporary files and logs.
+*.bak
+*.old
+*.tmp
+*.log
+
+# Editor/OS files.
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/

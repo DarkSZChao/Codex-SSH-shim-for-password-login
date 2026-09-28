@@ -1,0 +1,5 @@
+# Copy this stanza into your Windows OpenSSH config (~/.ssh/config).
+# Replace the example hostname and username with your own.
+Host codex-remote
+    HostName ssh.example.org
+    User YOUR_REMOTE_USERNAME
